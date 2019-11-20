@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#TME=`/bin/date +%F-%H%M`
+#HN=`hostname`
+
+cd ~/projects/booq/
+./bin/i5/links.sh
+
+#https://github.com/sjkingo/history_cloud
+#https://github.com/amueller/word_cloud
+#wordcloud_cli --text ~/.bash_history --imagefile history.png
+#pip install wordcloud
+#pip install Jinja2
+
+cd ./bin
+sudo ./booq_con_history.sh
+./booq_prepar_history.sh
+./booq_report_history.sh
+
+cd ..
+./bin/booq_prepar_note.sh
+./bin/booq_report_note_docs.sh
+
+./bin/booq_con_links.sh
+./bin/booq_prepar_links.sh
+
+cd bin
+./get_auto_tags_list_report.sh
+
+cd /opt/booq/report/img
+llgal --exif --li -L -R --title "HIST" --sx 800 --sy 600
