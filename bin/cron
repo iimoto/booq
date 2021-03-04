@@ -1,0 +1,25 @@
+#!/bin/bash
+
+source <(sed -E -n 's/[^#]+/export &/ p' .env)
+
+cd /opt/local
+pwd
+
+./docker/booq_collect_links.sh
+./docker/booq_collect_note.sh
+
+./booq_con_history.sh
+./booq_prepar_history.sh
+./booq_report_history.sh
+
+./booq_report_note_docs.sh
+
+./booq_prepar_links.sh
+
+./get_auto_tags_list_report.sh
+
+cd /opt/booq/report/img
+llgal --exif --li -L -R --title "HIST" --sx 800 --sy 600
+
+find /opt/booq/report -size  0 -print -delete
+
