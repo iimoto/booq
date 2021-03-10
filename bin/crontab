@@ -1,0 +1,3 @@
+#MAILTO=$MAILTOO
+00 22 * * * /opt/local/sender.sh
+00 21 * * * /opt/local/cron
